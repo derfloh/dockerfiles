@@ -10,4 +10,6 @@ RUN cd /usr/lib/x86_64-linux-gnu && \
    ln -s libsvn_subr-1.so.1 libsvn_subr-1.so.0 && \
    ln -s libsvn_delta-1.so.1 libsvn_delta-1.so.0 
 
+RUN rm /var/run && mv /run /var/run && ln -s /var/run /run
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
