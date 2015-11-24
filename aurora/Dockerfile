@@ -2,7 +2,12 @@ FROM python:2.7
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
+  libcurl4-nss-dev \
   libapr1-dev \
   libsvn-dev 
+
+RUN cd /usr/lib/x86_64-linux-gnu && \
+   ln -s libsvn_subr-1.so.1 libsvn_subr-1.so.0 && \
+   ln -s libsvn_delta-1.so.1 libsvn_delta-1.so.0 
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
